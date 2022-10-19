@@ -1,0 +1,276 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: inherit;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+img{
+    vertical-align: top;
+    display: block;
+    max-width: 100%;
+}
+
+button, input, select, option{
+    border: 0;
+    background-color: rgba(0,0,0,0);
+}
+
+/* font-family: 'Alkalami', serif; */
+/* font-family: 'Noto Sans KR', sans-serif; */
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+header{
+    border-top: 15px solid rgb(81, 0, 255);
+    border-bottom: 1px solid #ccc;
+}
+
+header .wrap{
+    max-width: 1320px;
+    margin: 0 auto;
+    height: 80px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+header h1{
+    width: 100%;
+    font-size: 28px;
+    /* font-family: 'Alkalami', serif; */
+    font-family: 'Raleway', sans-serif;
+    color: rgb(81, 0, 255);
+    line-height: 1.3;
+}
+
+.user{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.8);
+    
+    text-align: center;
+}
+.user .user-name{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.user h2{
+    font-family: 'Raleway', sans-serif;
+    color: tomato;
+    font-size: 60px;
+    margin-bottom: 40px;
+}
+
+.user form{
+    width: 100%;
+}
+.user form input{
+    max-width: 900px;
+    border-bottom: 1px solid #000;
+    width: 50%;
+    padding: 20px 0;
+    font-size: 40px;
+    text-align: center;
+}
+
+.user form input::placeholder{
+    text-align: center;
+    color: #d0d0d0;
+}
+
+.notLoggin{display: block;}.Loggin{display: none;}
+
+.welcome .user-name-output{
+    max-width: 1320px;
+    margin: 0 auto;
+    font-weight: 300;
+    font-size: 42px;
+    padding: 60px 0 40px 20px
+}
+
+.welcome .user-name-output span{
+    font-weight: 900;
+}
+
+main{
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 20px 40px;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+main section{
+    border-radius: 16px;
+    padding: 20px;
+}
+
+main .weather{
+    width: calc((100% - 20px) * 0.2);
+    
+    background-color: rgb(188, 188, 255);
+}
+main .weather .weather-output{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #fff;
+}
+main .weather .weather-output .temp{
+    font-size: 60px;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid lavender;
+}
+main .weather .weather-output .city{
+    width: 50%;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 300;
+}
+main .weather .weather-output .status{
+    width: 50%;
+    text-align: center;
+}
+main .weather .weather-output .status span{
+    font-size: 30px;
+    font-weight: 300;
+
+}
+main .todo{
+    width: calc((100% - 20px) * 0.8);
+    background-color: rgb(215, 250, 247);
+}
+
+main .todo .todo-list{
+
+}
+main .todo .todo-list .dashboard{
+    font-weight: 300;
+    font-size: 24px;
+    padding: 0 0 15px 12px;
+}
+main .todo .todo-list .dashboard span{
+    font-weight: 500;
+    color: blueviolet;
+}
+main .todo .todo-list #userTodo{
+    margin-bottom: 25px;
+}
+main .todo .todo-list #userTodo input{
+    width: 100%;
+    height: 60px;
+    border-radius: 12px;
+    background-color: #fff;
+    padding: 0 15px;
+    font-size: 16px;
+}
+main .todo .todo-list form input::placeholder{
+    font-size: 18px;
+}
+main .todo .todo-list h5{
+    padding: 12px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #000;
+}
+main .todo .todo-list #editTodo input{
+    width: 100%;
+    height: 24px;
+    color: rgb(255, 0, 0);
+}
+main .todo .todo-list .todo-lists{
+    max-height: 360px;
+    overflow-y: scroll;
+}
+main .todo .todo-list .todo-lists::-webkit-scrollbar{
+    width: 8px;
+}
+main .todo .todo-list .todo-lists::-webkit-scrollbar-thumb{
+    background-color: rgb(102, 180, 102);
+    border-radius: 50px;
+    width: 8px;
+}
+main .todo .todo-list .todo-lists::-webkit-scrollbar-track{
+    width: 8px;
+    background-color: rgb(186, 230, 186);
+}
+main .todo .todo-list .user-list li{
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px
+}
+main .todo .todo-list .user-list li:last-child{
+    border-bottom: 0;
+}
+main .todo .todo-list .user-list li .content{}
+main .todo .todo-list .user-list li .util{
+    display: flex;
+    align-items: center;
+}
+main .todo .todo-list .user-list li .util button{
+    display: flex;
+    padding: 0;
+    border: 0;
+    align-items: center;
+    line-height: 1.3;
+    margin-left: 20px;
+}
+
+main .todo .todo-list .user-list li .util button span{
+    color: rgb(130, 204, 157);
+    font-weight: 300;
+}
+
+main .todo .todo-list .user-list li .util button span:hover{
+    color: rgb(0, 139, 51);
+}
+
+.user-list li .util input{
+    width: 1px;
+    height: 1px;
+    border: 0;
+    appearance: none;
+    background-color: transparent;
+}
+
+.user-list li label{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.user-list li label::after{
+    content: '';   
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 7px;
+    transform: rotate(45deg);
+    width: 4px;
+    height: 8px;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 0 2px 2px 0;
+}
+
+.user-list li input:checked + label::after{
+    border-color: blueviolet;
+}

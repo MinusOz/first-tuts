@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkalami&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Raleway:ital,wght@1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <h1>Web-app Tuts.</h1>
+            <form id="userSearch" action="" style="display: flex;">
+                <select name="" id="">
+                    <option value="google" selected>Goole</option>
+                    <option value="naver">NAVER</option>
+                    <option value="daum">Daum</option>
+                </select>
+                <input type="text" placeholder="Search">
+            </form>
+            <script>
+                $("#userSearch").on("submit", function(e) {
+                    e.preventDefault();
+
+                    let engine = $(this).find("select").val();
+                    let keyword = $(this).find("input").val();
+                    //  window.open = ""
+                    switch(engine){
+                        case "google" : location.href = "https://www.google.com/search?q=" + keyword
+                        break;
+                        case "naver" : location.href = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=" + keyword;
+                        break;
+                        case "daum" : location.href = "https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&sugo=&sq=&o=&q=" + keyword;
+                        break;
+                    }
+                });
+            </script>
+        </div>
+    </header>
+    <section class="user">
+        <div class="user-name">
+            <h2>Welcome.</h2>
+            <form id="userName" action="">
+                <input type="text" placeholder="Enter your name to started." maxlength="10" required>
+            </form>
+        </div>
+    </section>
+    <script>
+        $("section.user").fadeIn(1100);
+    </script>
+    <section class="welcome notLoggin">
+        <div class="user-name-output">
+            Local Storage를 활용한 To-do 앱 제작
+        </div>
+    </section>
+    <section class="welcome Loggin">
+        <div class="user-name-output">
+            <div>안녕하세요. <br> <span class="name">임현식</span>님</div>
+        </div>
+    </section>
+    <main>
+        <section class="weather">
+            <div class="weather-output">
+                <div class="temp">16C°</div>
+                <div class="city">Busan</div>
+                <div class="status"></div>
+            </div>
+            <script>
+                const key = "3ca5553601c03e837d8941ccea0dadcb"
+                
+                let success = function(coord) {
+                    let lat = coord.coords.latitude;
+                    let lon = coord.coords.longitude;
+                    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`
+                    fetch(url)
+                    .then(function(weather) {
+                        return weather.json();
+                    })
+                    .then(function(data) {
+                        let temp = data.main.temp;
+                            temp = Math.round(temp);
+                        let city = data.name;
+                        let cond = data.weather[0].description;
+                        let condIco = data.weather[0].icon;
+                        let condUrl = `http://openweathermap.org/img/wn/${condIco}.png`
+
+                        $(".temp").text(temp + "℃");
+                        $(".city").text(city);
+                        $(".status").html(`<img src="${condUrl}" alt="${cond}"/>`)
+                    })  
+                    .catch(function(err) {
+                        console.error(err);
+                    });
+                }
+                navigator.geolocation.getCurrentPosition(success);
+                // console.log(navigator.geolocation.getCurrentPosition(function() {}));
+            </script>
+        </section>
+        <section class="todo">
+            <div class="todo-list">
+                <div class="dashboard">
+                    <span class="user-name">임현식</span>님의
+                    해야할 일은 총 <span class="total">n</span>개 중,
+                    <span class="pending">n</span>건이 남았습니다.
+                </div>
+                <form id="userTodo" action="">
+                    <input type="text" placeholder="New Todo" required>
+                </form>
+                <div class="todo-lists">
+                    <h5>To-dos</h5>
+                    <ul class="user-list">
+                        <!-- <li>
+                            <div class="content">밥 뭐먹지???</div>
+                            <div class="util">
+                                <button class="edit">
+                                    <span class="material-symbols-outlined">
+                                        edit_square
+                                    </span>
+                                </button>
+                                <button class="delete">
+                                    <span class="material-symbols-outlined">
+                                        delete
+                                    </span>
+                                </button>
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+</body>
+</html>
